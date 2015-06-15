@@ -1,0 +1,44 @@
+{{view 'page-title'}}
+{{partial 'partials/flash'}}
+
+<div class="container settings property-settings">
+  <div class="setting">
+    <div class="setting-title"> Heading </div>
+    <div class="setting-value">
+      {{input value=model.name}}
+    </div>
+  </div>
+
+  <div class="setting">
+    <div class="setting-title"> Subheading </div>
+    <div class="setting-value">
+      {{input value=model.sub_heading}} 
+    </div>
+  </div>
+  
+  
+  {{#each option in model.options}}
+    {{partial 'option/inline'}}
+  {{/each}}
+
+  <div class="preamble">
+    <div class="title small">
+      Add new option image to be displayed
+      <span class="sub-text"> e.g. Granite top </span>
+    </div>
+    <div class="new-att-icon">
+      <a {{action "newOption"}}> <img src="img/new-property-icon.png"></a>
+    </div>
+  </div>
+
+  <div class="setting custom">
+    <div class="setting-key">
+      {{input value=newOptionName placeholder="e.g. \"Granite top\""}}
+  </div>
+
+
+    <div class="save-container">
+      <button class="button" {{action "save"}}> Save </button>
+    </div>
+  </div>
+</div>

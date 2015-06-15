@@ -1,0 +1,14 @@
+<div class="admin-header">
+	MANAGE:
+</div>
+
+<ul>
+	{{#each item in admin_links}}
+		<li>
+	  	<img class="icon" {{bind-attr src=item.icon}}>
+	  		 {{link-to item.title item.route controller.controllers.application.activeProperty}}
+	  </li>
+	{{/each}}
+</ul>
+
+<div class="small-nav-spacer"></div>

@@ -1,0 +1,172 @@
+@import "base";
+
+html, body {
+  margin: 0px;
+  background-color: $prime;
+  font-size: 12px;
+  font-color: inherit;
+  font-family: "Brandon Grotesque";
+  overflow-y: scroll;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+body {
+  background-color: $prime;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+}
+
+input,
+textarea {
+  border: none;
+  background-color: $white;
+  font-size: inherit;
+  color: $lightBlue;
+  padding: 0.25em 0.5em;
+  height: 1.5em;
+  width: 125px;
+  @include border-radius(0);
+}
+
+input:focus, textarea:focus{
+  outline: none;
+}
+
+button, input, textarea {
+  font-family: "Brandon Grotesque";
+}
+
+.container {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+
+
+.header {
+  height: $headerHeight;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+
+  line-height: 50px;
+  background-color: $prime;
+}
+
+.header-left {
+  display: inline-block;
+  float: right;
+  margin: 2.5em 10px 1.5em;
+
+  line-height: 1.5em;
+  vertical-align: middle;
+}
+
+.nav-icon {
+  margin: 3em $leftBumper 1.5em;
+  line-height: 1.5em;
+  vertical-align: middle;
+  height: 1.5em;
+  width: 2em;
+}
+
+.edit-button {
+  padding: 0.5em 1em;
+  background-color: $white;
+  font-size: 1em;
+  color: $prime;
+}
+
+.container {
+  background-color: $lightestGrey;
+}
+
+.page-title {
+  position: relative;
+  height: 1.5em;
+  line-height: 1.5em;
+  background-color: $dark;
+
+  color: $white;
+  font-size: 2em;
+  text-align: center;
+
+  font-weight: 500;
+
+  span {
+    float: left;
+    padding-left: 10px;
+    padding-top: 6px;
+  }
+}
+
+.back-icon {
+    position: absolute;
+    height: 1em;
+  }
+
+
+
+
+.left {
+  display: inline-block;
+  float: left;
+}
+
+.right {
+  display: inline-block;
+  float: right;
+}
+
+.save-container {
+  padding: 30px 0px;
+  text-align: center;
+}
+
+.button {
+  border-radius: 3px;
+  background-color: $prime;
+  height: 32px;
+  padding: 0px 20px;
+
+  color: $white;
+  font-size: inherit;
+}
+
+.edit-app-icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  img {
+    height: 20px;
+    width: 20px;
+  }
+}
+
+.content {
+  position: relative;
+  margin-top: $headerHeight;
+}
+
+.form-validator {
+  font-size: 0.8em;
+  color: $subGrey;
+}
+
+@import 'properties';
+@import 'property';
+@import 'listpage';
+@import 'nav';
+@import 'menu';
+@import 'flashes';

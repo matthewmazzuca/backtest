@@ -1,0 +1,281 @@
+/* header should be removed*/
+/* some of propery-detail should be included in property-hero*/
+
+$appCardHeight: 80px;
+
+
+
+.property-profile {
+  position: relative;
+  height: 20em;
+  width: 100%;
+  display: block;
+
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+    img {
+      max-width: 1000px;
+      max-height: 1000px;
+    }
+
+    .back-icon {
+      position: absolute;
+      padding-right: 1.5%;
+      padding-left: 2%;
+      height: 2em;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+    }
+
+  }
+
+
+.property-hero-title {
+  /*should pull info from google maps to show address, postal code/zip, and city,state */
+
+  @extend .uppercase-or-num;
+  font-size: 2em;
+  line-height: 1em;
+  font-weight: normal;
+  color:white;
+  margin: 0 auto;
+  position: absolute;
+  top: 7.083em; /* or 170px */
+  width: 100%;
+    
+    span {
+      background: rgba(0,0,0,0.7);
+        padding: 5px;
+      }
+
+  .name {
+    @extend .ellipsize;
+    width: 75%;
+  }
+}
+
+.property-subheading {
+  @extend .propery-hero-box;
+  @extend .uppercase-or-num;
+  positon: absolute;
+  font-size: 0.5em;
+  padding-top: 1.25em;
+  padding-bottom: 1em;
+  margin: 0 auto;
+  color:white;
+}
+
+
+
+.property-show {
+  color: $white;
+  text-align: center;
+}
+
+.property-details {
+  background-color: $dark;
+  font-weight: normal;
+}
+
+.property-hero {
+  position: relative;
+  font-weight: normal;
+
+  background-color: $dark;
+  height: 20em;
+  padding: 2em 2px;
+}
+
+
+
+.property-hero-box {
+  display: block;
+  width: 180px;
+}
+
+
+.clock-icon {
+  display: none;
+  margin: 0 $leftBumper 0 0.25em;
+  height: 0.66667em;
+}
+
+
+.property-contact {
+  /*removed because it serves no purpose with address, may be useful with agent info */
+  @extend .property-hero-box;
+  display: none;
+  font-size: inherit;
+  padding: 0.5em 0;
+  margin-left: auto;
+  margin-right: auto;
+  color:white;
+
+  .detail {
+
+    
+    
+    .left {
+      text-align: left;
+      left: 0;
+    }
+
+    .right {
+      text-align: right;
+      right: 0;
+    }
+  }
+}
+
+.wait-time-cont {
+  height: 12px;
+  margin-bottom: 20px;
+}
+
+.wait-time {
+  display: inline-block;
+  background: $highlightGrey;
+  font-size: inherit;
+  line-height: 1em;
+  letter-spacing: 1px;
+  width: 180px;
+
+  height: 100%;
+  padding: 10px;
+}
+
+.down-icon-cont {
+ 
+  background-color: $dark;
+  padding-bottom: 0.5em;
+  position: relative;
+  text-align: center;
+  img {
+    opacity: 0.3;
+    height: 0.5em;
+  }
+}
+
+.property-apps {
+  padding: 0% 4.5%;
+  background-color: $lightGrey;
+  position: relative;
+}
+
+.app-card {
+  @extend .uppercase-or-num;
+
+  position: relative;
+
+  height: $appCardHeight;
+  padding: 0% 4.5%;
+
+  line-height: 80px;
+  border-bottom: 1px solid $white;
+
+  color: $black;
+  font-size: 2em;
+}
+
+.highlight-card {
+  margin-top: 20px;
+  height: 110px;
+
+  padding: 0%;
+  overflow: hidden;
+
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.highlight-content {
+  height: 110px;
+  background:rgba(0,0,0,0.2);
+
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+
+  color: $white;
+  line-height: 25px;
+
+  .highlight-title {
+    font-size: inherit;
+  }
+
+  .highlight-subtitle {
+    font-size: 0.75em;
+    line-height: 30px;
+  }
+}
+
+.app-icon {
+  margin-right: 3%;
+  height: 20px;
+}
+
+.property-description {
+  font-size: 14px;
+  margin: 15px $leftBumper 0px;
+  text-align: left;
+
+}
+
+.property-desc {
+  margin-top: 1.5em;
+}
+
+.property-detail {
+  height: 2em;
+  line-height: 2em;
+  border-bottom: 1px solid $lineGrey;
+
+  .left {
+    float: left;
+    font-weight: 500;
+  }
+  .right {
+    float: right;
+  }
+}
+
+.property-map-container {
+  background-color: $lineGrey;
+  height: 200px;
+  padding: 12.5px;
+  margin-top: 60px;
+}
+
+.property-map {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.property-address {
+  position: absolute;
+  bottom: 0;
+
+  background-color: $translucentAqua;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  font-size: 1.5em;
+}
+
+.new-att-icon {
+  color: $lightBlue;
+  display: inline-block;
+  margin-left: 10px;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.setting-title-small {
+  padding: 2em 10px 0em 10px;
+}
