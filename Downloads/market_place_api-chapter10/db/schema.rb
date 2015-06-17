@@ -11,9 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116223258) do
+ActiveRecord::Schema.define(version: 20150612025412) do
 
-  create_table "delayed_jobs", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "postgis"
+
+  create_table "beacons", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "uuid",        array: true
+    t.integer  "location_id"
+  end
+
+  add_index "beacons", ["location_id"], name: "index_beacons_on_location_id", using: :btree
+
+  create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
     t.text     "handler",                null: false
@@ -27,18 +41,18 @@ ActiveRecord::Schema.define(version: 20150116223258) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
-  create_table "orders", force: true do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
     t.decimal  "total"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
-  create_table "placements", force: true do |t|
+  create_table "placements", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "product_id"
     t.datetime "created_at"
@@ -46,10 +60,10 @@ ActiveRecord::Schema.define(version: 20150116223258) do
     t.integer  "quantity",   default: 0
   end
 
-  add_index "placements", ["order_id"], name: "index_placements_on_order_id"
-  add_index "placements", ["product_id"], name: "index_placements_on_product_id"
+  add_index "placements", ["order_id"], name: "index_placements_on_order_id", using: :btree
+  add_index "placements", ["product_id"], name: "index_placements_on_product_id", using: :btree
 
-  create_table "products", force: true do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "title",      default: ""
     t.decimal  "price",      default: 0.0
     t.boolean  "published",  default: false
@@ -59,9 +73,34 @@ ActiveRecord::Schema.define(version: 20150116223258) do
     t.integer  "quantity",   default: 0
   end
 
-  add_index "products", ["user_id"], name: "index_products_on_user_id"
+  add_index "products", ["user_id"], name: "index_products_on_user_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "properties", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.text     "description"
+    t.decimal  "lat",         precision: 9, scale: 6
+    t.decimal  "lng",         precision: 9, scale: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spatial_ref_sys", primary_key: "srid", force: :cascade do |t|
+    t.string  "auth_name", limit: 256
+    t.integer "auth_srid"
+    t.string  "srtext",    limit: 2048
+    t.string  "proj4text", limit: 2048
+  end
+
+  create_table "user_devices", force: :cascade do |t|
+    t.string   "name"
+    t.string   "token"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -77,8 +116,8 @@ ActiveRecord::Schema.define(version: 20150116223258) do
     t.string   "auth_token",             default: ""
   end
 
-  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
