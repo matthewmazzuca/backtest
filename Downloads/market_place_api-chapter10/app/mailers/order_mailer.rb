@@ -1,5 +1,5 @@
 class OrderMailer < ActionMailer::Base
-  default from: "no-reply@marketplace.com"
+  default from: "no-reply@openhouse.com"
 
   def send_confirmation(order)
     @order = order
